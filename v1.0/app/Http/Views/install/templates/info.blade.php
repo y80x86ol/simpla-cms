@@ -1,3 +1,9 @@
+<?php
+
+//视图中使用Input
+use Illuminate\Support\Facades\Input;
+?>
+
 @extends('InstallTheme::layout.page')
 
 @section('content')
@@ -8,7 +14,7 @@
     <div class="listing-content">
         <h3 class="lead">Simpla安装向导<small>第三步</small></h3>
         <hr>
-        {{ Form::open(array('method' => 'post')) }}
+        {!! Form::open(array('method' => 'post')) !!}
         <!--错误提示-->
         @if($errors->all())
         <div class="alert alert-danger alert-dismissable">
@@ -76,7 +82,7 @@
                 </p>
             </div>
         </div>
-        {{Form::close()}}
+        {!! Form::close() !!}
     </div>
 </div>
 

@@ -7,6 +7,8 @@
 namespace App\Http\Models\Block;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Block\Blockarea;
+use App\Http\Models\Theme\Theme;
 
 class Blockarea extends Model {
 

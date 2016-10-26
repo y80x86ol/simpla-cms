@@ -9,6 +9,7 @@
  * 方法：
  * --Theme::node_home($nodes)：获取node_home.blade.php中的内容样式
  */
+use App\Http\Models\Theme\Theme;
 ?>
 
 @extends('Theme::layout.page')

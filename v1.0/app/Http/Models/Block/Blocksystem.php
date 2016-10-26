@@ -8,6 +8,13 @@ namespace App\Http\Models\Block;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Http\Models\Block\Block;
+use App\Http\Models\Block\Blockarea;
+use App\Http\Models\Node\Node;
+use App\Http\Models\User\User;
+use App\Http\Models\Link;
+use Illuminate\Support\Facades\View;
+
 class Blocksystem extends Model {
 
     /**

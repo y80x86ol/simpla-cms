@@ -3,9 +3,19 @@
 /*
  * 系统安装
  */
+
 namespace App\Http\Controllers\Install;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use App\Http\Models\Install;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Models\User\UserRoles;
 
 class InstallController extends Controller {
 
@@ -59,10 +69,10 @@ class InstallController extends Controller {
     /**
      * 第三步：填写信息和安装
      */
-    public function info() {
+    public function info(Request $request) {
         View::share('title', 'Simpla安装向导：第三步');
 
-        if (Request:: method() == 'POST') {
+        if ($request->method() == 'POST') {
             $input = Input::all();
             $rules = array(
                 'db_hostname' => 'required|max:100',
@@ -104,7 +114,7 @@ class InstallController extends Controller {
             }
 
             //1、替换数据
-            $database_setting_dir = dirname(dirname(__DIR__)) . '/config/database_setting.php';
+            $database_setting_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/config/database_setting.php';
             $database_setting = file_get_contents($database_setting_dir);
             $database_setting = str_replace('{{mysql_host}}', $input['db_hostname'], $database_setting);
             $database_setting = str_replace('{{mysql_database}}', $input['db_name'], $database_setting);
@@ -112,7 +122,7 @@ class InstallController extends Controller {
             $database_setting = str_replace('{{mysql_password}}', $input['db_password'], $database_setting);
             $database_setting = str_replace('{{mysql_prefix}}', $input['db_prefix'], $database_setting);
             //2、写入数据
-            $mail = dirname(dirname(__DIR__)) . '/config/database.php';
+            $mail = dirname(dirname(dirname(dirname(__DIR__)))) . '/config/database.php';
             file_put_contents($mail, $database_setting);
 
             try {
@@ -126,7 +136,7 @@ class InstallController extends Controller {
                 //开始事务
                 DB::beginTransaction();
                 //通过文件安装
-                $simpla_sql = File::get(dirname(dirname(__DIR__)) . '/database/simpla.sql');
+                $simpla_sql = File::get(dirname(dirname(dirname(dirname(__DIR__)))) . '/database/simpla.sql');
                 $db_prefix = DB::connection()->getTablePrefix();
                 $simpla_sql = str_replace("\r", "\n", str_replace('#__', $db_prefix, $simpla_sql));
                 DB::unprepared($simpla_sql);
@@ -142,7 +152,7 @@ class InstallController extends Controller {
                 $data_role = array('uid' => $uid, 'rid' => 3);
                 UserRoles::create($data_role);
                 //安装完成，添加锁定文件
-                File::put(dirname(dirname(__DIR__)) . '/lock.txt', '这是一个锁定文件，请不要删除!如果要重新安装，请删除该文件!');
+                File::put(dirname(dirname(dirname(dirname(__DIR__)))) . '/lock.txt', '这是一个锁定文件，请不要删除!如果要重新安装，请删除该文件!');
             } catch (Exception $e) {
                 //事务回滚
                 DB::rollback();
@@ -154,10 +164,10 @@ class InstallController extends Controller {
 
             //安装成功替换app数据
             //1、获取url和key值
-            $app_url = 'http://' . Request::server('SERVER_NAME');
+            $app_url = 'http://' . $request->server('SERVER_NAME');
             $app_key = md5(rand(100000, 999999));
             //2、替换数据
-            $app_dir = dirname(dirname(__DIR__)) . '/config/app.php';
+            $app_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/config/app.php';
             $app_setting = file_get_contents($app_dir);
             $app_setting = str_replace('{{url}}', $app_url, $app_setting);
             $app_setting = str_replace('{{key}}', $app_key, $app_setting);
@@ -165,7 +175,7 @@ class InstallController extends Controller {
             file_put_contents($app_dir, $app_setting);
 
             //安装成功
-            return Redirect::to('/install/step4');
+            return redirect()->to('/install/step4');
         }
 
         //检查数据库连接

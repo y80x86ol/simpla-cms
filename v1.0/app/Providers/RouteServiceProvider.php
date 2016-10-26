@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -23,7 +25,14 @@ class RouteServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot(Router $router) {
+        $request = new Request();
         //
+        //检查程序是否已经安装
+        if (!strpos($request->url(), 'install')) {
+            if (!file_exists('../app/lock.txt')) {
+                //return Redirect::to('/install/step1');
+            }
+        }
 
         parent::boot($router);
     }

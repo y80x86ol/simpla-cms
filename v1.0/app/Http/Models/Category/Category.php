@@ -7,6 +7,7 @@
 namespace App\Http\Models\Category;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Base;
 
 class Category extends Model {
 

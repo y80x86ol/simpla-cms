@@ -35,7 +35,7 @@ Route::pattern('baid', '[0-9]+');   //block_area区块区域ID
 Route::group(['namespace' => 'Frontend'], function() {
 
 
-    Route::get('/', 'Frontend\SiteController@index');
+    Route::get('/', 'SiteController@index');
 //登录、注册、退出、找回密码
     Route::match(array('GET', 'POST'), '/login', array('as' => 'login', 'uses' => 'UserController@login'));
     Route::match(array('GET', 'POST'), '/logout', array('as' => 'logout', 'uses' => 'UserController@logout'));
@@ -262,7 +262,6 @@ Route::group(['namespace' => 'Install'], function() {
     Route::match(array('GET', 'POST'), '/install/step3', array('as' => 'install_info', 'uses' => 'InstallController@info'));
     Route::match(array('GET', 'POST'), '/install/step4', array('as' => 'install_go', 'uses' => 'InstallController@success'));
 });
-
 
 
 

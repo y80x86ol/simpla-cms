@@ -22,7 +22,7 @@
                     <td>操作系统</td>
                     <td>{{$recommendEnvironment['os']}}</td>
                     <td>
-                        {{$currentEnvironment['os_ischeck']?'<span class="glyphicon glyphicon-ok text-success"></span>':'<span class="glyphicon glyphicon-remove text-danger"></span>'}}
+                        <span class="glyphicon {{$currentEnvironment['os_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
                         {{$currentEnvironment['os']}}
                     </td>
                     <td>{{$lowestEnvironment['os']}}</td>
@@ -31,7 +31,7 @@
                     <td>PHP版本</td>
                     <td>{{$recommendEnvironment['version']}}</td>
                     <td>
-                        {{$currentEnvironment['version_ischeck']?'<span class="glyphicon glyphicon-ok text-success"></span>':'<span class="glyphicon glyphicon-remove text-danger"></span>'}}
+                        <span class="glyphicon {{$currentEnvironment['version_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
                         {{$currentEnvironment['version']}}
                     </td>
                     <td>{{$lowestEnvironment['version']}}</td>
@@ -40,7 +40,7 @@
                     <td>MCrypt PHP 扩展</td>
                     <td>{{$recommendEnvironment['mcrypt']}}</td>
                     <td>
-                        {{$currentEnvironment['mcrypt_ischeck']?'<span class="glyphicon glyphicon-ok text-success"></span>':'<span class="glyphicon glyphicon-remove text-danger"></span>'}}
+                        <span class="glyphicon {{$currentEnvironment['mcrypt_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
                         {{$currentEnvironment['mcrypt']}}
                     </td>
                     <td>{{$lowestEnvironment['mcrypt']}}</td>
@@ -50,7 +50,7 @@
                     <td>附件上传</td>
                     <td>{{$recommendEnvironment['upload']}}</td>
                     <td>
-                        {{$currentEnvironment['upload_ischeck']?'<span class="glyphicon glyphicon-ok text-success"></span>':'<span class="glyphicon glyphicon-remove text-danger"></span>'}}
+                        <span class="glyphicon {{$currentEnvironment['upload_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
                         {{$currentEnvironment['upload']}}
                     </td>
                     <td>{{$lowestEnvironment['upload']}}</td>
@@ -59,7 +59,7 @@
                     <td>磁盘空间</td>
                     <td>{{$recommendEnvironment['space']}}</td>
                     <td>
-                        {{$currentEnvironment['space_ischeck']?'<span class="glyphicon glyphicon-ok text-success"></span>':'<span class="glyphicon glyphicon-remove text-danger"></span>'}}
+                        <span class="glyphicon {{$currentEnvironment['space_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
                         {{$currentEnvironment['space']}}
                     </td>
                     <td>{{$lowestEnvironment['space']}}</td>

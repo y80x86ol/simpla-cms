@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 变量：
  * --$title：标题
@@ -27,6 +28,8 @@
  * --Blockarea::get('sidebar_left'):左边来区域展示
  * 
  */
+use App\Http\Models\Block\Blockarea;
+use App\Http\Models\Breadcrumb;
 ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -52,7 +55,7 @@
     <body>
         <!--头部-->
 
-        @include('layout.header')
+        @include('Theme::layout.header')
 
         <!--中间-->
         <div class="container">
@@ -88,13 +91,13 @@
             <!--底部区块footer-block-->
             <div class="row">
                 <div class="col-md-12">
-                    {{Blockarea::get('footer');}}
+                    {{Blockarea::get('footer')}}
                 </div>
             </div>
             <!--底部footer-->
             <div class="row">
                 <div class="col-md-12">
-                    @include('layout.footer')
+                    @include('Theme::layout.footer')
                 </div>
             </div>
         </div>

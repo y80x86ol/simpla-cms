@@ -7,6 +7,12 @@
 namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
+use App\Http\Models\Theme\Theme;
+use Illuminate\Support\Facades\View;
+use App\Http\Models\Category\Category;
+use App\Http\Models\Category\Categorydata;
+use App\Http\Models\User\User;
 
 class Breadcrumb extends Model {
 

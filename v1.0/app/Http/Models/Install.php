@@ -13,7 +13,7 @@ class Install extends Model {
     public static function _getLowestEnvironment() {
         return array(
             'os' => '不限制',
-            'version' => '5.4',
+            'version' => '5.6',
             'mcrypt' => '必须',
             //'mysql' => '4.2',
             //'pdo_mysql' => '必须',
@@ -68,7 +68,7 @@ class Install extends Model {
     public static function _getRecommendEnvironment() {
         return array(
             'os' => '类UNIX',
-            'version' => '>5.4.x',
+            'version' => '>5.6.x',
             'mcrypt' => '必须',
             //'mysql' => '>5.x.x',
             //'pdo_mysql' => '必须',
