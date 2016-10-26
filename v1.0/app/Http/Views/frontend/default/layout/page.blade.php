@@ -54,7 +54,7 @@
     <body>
         <!--头部-->
 
-        @include('DefaultTheme::layout.header')
+        @include('layout.header')
 
         <!--中间-->
         <div class="container">
@@ -96,7 +96,7 @@
             <!--底部footer-->
             <div class="row">
                 <div class="col-md-12">
-                    @include('DefaultTheme::layout.footer')
+                    @include('layout.footer')
                 </div>
             </div>
         </div>

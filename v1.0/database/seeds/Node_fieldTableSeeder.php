@@ -22,7 +22,7 @@ class NodefieldTableSeeder extends Seeder {
             ),
         );
         foreach ($data as $item) {
-            User::create($item);
+            DB::table('node_field')->insert($item);
         }
     }
 

@@ -19,7 +19,7 @@ class InstallCheck {
         //检查程序是否已经安装
         if (!strpos($request->url(), 'install')) {
             if (!file_exists('../app/lock.txt')) {
-                return Redirect::to('/install/step1');
+                return redirect()->to('/install/step1');
             }
         }
 

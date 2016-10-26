@@ -4,8 +4,12 @@
  * 内容钩子
  * Hook_node
  */
+
 namespace App\Http\Models\Hook;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Base;
+
 class Hook_node extends Model {
 
     /**

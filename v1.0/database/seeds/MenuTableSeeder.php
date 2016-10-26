@@ -28,7 +28,7 @@ class MenuTableSeeder extends Seeder {
             ),
         );
         foreach ($data as $item) {
-            User::create($item);
+            DB::table('users')->insert($item);
         }
     }
 

@@ -3,7 +3,10 @@
 /*
  * 主题系统逻辑，都在这里处理
  */
+
 namespace App\Http\Models\Theme;
+
+use Illuminate\Support\Facades\View;
 
 class Theme {
 

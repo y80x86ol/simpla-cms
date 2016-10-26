@@ -3,7 +3,9 @@
 /*
  * User表测试数据
  */
+
 use Illuminate\Database\Seeder;
+
 class UserTableSeeder extends Seeder {
 
     public function run() {
@@ -29,7 +31,7 @@ class UserTableSeeder extends Seeder {
             )
         );
         foreach ($data as $item) {
-            User::create($item);
+            DB::table('users')->insert($item);
         }
     }
 

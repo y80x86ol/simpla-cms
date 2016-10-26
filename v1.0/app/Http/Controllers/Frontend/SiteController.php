@@ -8,6 +8,9 @@ use App\Http\Models\Seo;
 use Illuminate\Support\Facades\View;
 use App\Http\Models\Setting;
 use App\Http\Models\Node\Node;
+use App\Http\Models\Hook\Hook_page;
+use App\Http\Models\Theme\Theme;
+
 
 class SiteController extends BaseController {
 

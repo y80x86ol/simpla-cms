@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 变量：
  * --$nodes：内容列表
@@ -11,7 +12,7 @@
  */
 ?>
 
-@extends('DefaultTheme::layout.page')
+@extends('layout.page')
 
 @section('content')
 

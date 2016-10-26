@@ -5,7 +5,6 @@
  */
 
 use Illuminate\Database\Seeder;
-use App\Http\Models\Block\Block;
 
 class BlockTableSeeder extends Seeder {
 
@@ -58,7 +57,7 @@ class BlockTableSeeder extends Seeder {
             ),
         );
         foreach ($data as $item) {
-            Block::create($item);
+            DB::table('block')->insert($item);
         }
     }
 

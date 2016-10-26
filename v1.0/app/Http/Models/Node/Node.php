@@ -7,10 +7,14 @@
 namespace App\Http\Models\Node;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Base;
+use App\Http\Models\Node\Node;
 use App\Http\Models\Node\Nodefield;
 use App\Http\Models\Field\Fieldconfig;
 use App\Http\Models\Category\Category;
+use App\Http\Models\Category\Categorytype;
 use App\Http\Models\User\User;
+use App\Http\Models\Hook\Hook_node;
 
 class Node extends Model {
 

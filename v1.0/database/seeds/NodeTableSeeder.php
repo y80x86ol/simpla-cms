@@ -21,7 +21,7 @@ class NodeTableSeeder extends Seeder {
             ),
         );
         foreach ($data as $item) {
-            User::create($item);
+            DB::table('node')->insert($item);
         }
     }
 

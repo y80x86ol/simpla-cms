@@ -38,7 +38,7 @@ class BaseController extends Controller {
         /**
          * 定义系统模板路径
          */
-        View::addNamespace('System', dirname(__DIR__) . '/views/system/');
+        View::addNamespace('System', dirname(__DIR__) . '/Views/system/');
 
 
         /**
@@ -78,15 +78,15 @@ class BaseController extends Controller {
          */
         //前端主题
         View::share('theme_default', $this->theme_default);
-        View::addNamespace('Theme', dirname(__DIR__) . '/themes/' . $this->theme_default . '/');
+        View::addNamespace('Theme', dirname(dirname(__DIR__)) . '/Themes/' . $this->theme_default . '/');
         //前端默认主题
-        View::addNamespace('DefaultTheme', dirname(__DIR__) . '/views/frontend/default/');
+        View::addNamespace('DefaultTheme', dirname(__DIR__) . '/Views/frontend/default/');
         //前端静态Public地址
         define('THEME_STATIC', '/themes/' . $this->theme_default);
         //后端主题
         $this->adminThem = Setting::find('admin_theme') ? Setting::find('admin_theme')->value : 'default';
-        View::addNamespace('BackTheme', dirname(__DIR__) . '/views/backend/' . $this->adminThem . '/');
-        define('BACK_THEME_STATIC', '/views/backend/' . $this->adminThem);
+        View::addNamespace('BackTheme', dirname(__DIR__) . '/Views/backend/' . $this->adminThem . '/');
+        define('BACK_THEME_STATIC', '/Views/backend/' . $this->adminThem);
 
 
         /**
