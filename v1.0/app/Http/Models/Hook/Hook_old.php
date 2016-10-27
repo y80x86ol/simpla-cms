@@ -3,8 +3,12 @@
 /*
  * 基础默认公共方法
  */
+
 namespace App\Http\Models\Hook;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Base;
+
 class Hook_old extends Model {
     /** ============================================================
      * node内容

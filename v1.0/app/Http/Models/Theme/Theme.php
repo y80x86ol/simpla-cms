@@ -171,7 +171,8 @@ class Theme {
         foreach ($blocks as $block) {
             //如果是系统(system)或者第三方模块(model)，则执行方法
             if ($block['type'] != 'customer') {
-                $callback = $block['callback'];
+                $callback = 'App\Http\Models\Block\\'.$block['callback'];
+                //print_r($callback);die("hello");
                 eval("\$block['body'] = $callback"); //使用eval函数执行
             }
             //如果是普通模块(customer)，则直接进入主题模板

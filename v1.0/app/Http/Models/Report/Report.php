@@ -3,8 +3,13 @@
 /*
  * 内容
  */
+
 namespace App\Http\Models\Report;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Node\Node;
+use App\Http\Models\User\User;
+
 class Report extends Model {
 
     /**

@@ -4,8 +4,12 @@
  * 用户钩子
  * Hook_user
  */
+
 namespace App\Http\Models\Hook;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Hook\Hook;
+
 class Hook_user extends Model {
 
     /**

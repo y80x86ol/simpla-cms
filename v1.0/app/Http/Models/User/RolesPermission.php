@@ -7,6 +7,7 @@
 namespace App\Http\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Hook\Hook_access;
 
 class RolesPermission extends Model {
 

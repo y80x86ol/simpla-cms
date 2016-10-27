@@ -4,8 +4,13 @@
  * 角色权限钩子
  * Hook_access
  */
+
 namespace App\Http\Models\Hook;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Hook\Hook;
+use App\Http\Models\Base;
+
 class Hook_access extends Model {
 
     /**

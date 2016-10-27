@@ -3,8 +3,16 @@
 /*
  * 内容类型
  */
+
 namespace App\Http\Models\Node;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Category\Category;
+use App\Http\Models\Category\Categorytype;
+use App\Http\Models\Field\Fieldconfig;
+use App\Http\Models\Node\Nodetype;
+use App\Http\Models\Base;
+
 class Nodetype extends Model {
 
     protected $table = 'node_type';

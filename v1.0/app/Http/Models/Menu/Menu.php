@@ -8,6 +8,7 @@ namespace App\Http\Models\Menu;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Base;
+use App\Http\Models\Menu\Menu;
 
 class Menu extends Model {
 

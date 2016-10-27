@@ -4,8 +4,12 @@
  * 区块钩子
  * Hook_block
  */
+
 namespace App\Http\Models\Hook;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Base;
+
 class Hook_block extends Model {
 
     /**

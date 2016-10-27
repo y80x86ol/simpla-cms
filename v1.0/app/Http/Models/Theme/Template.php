@@ -3,8 +3,10 @@
 /*
  * 主题模板输出
  */
+
 namespace App\Http\Models\Theme;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Html\HtmlFacade;
 
 class Template {
@@ -17,8 +19,8 @@ class Template {
     public static function css($css) {
         $html = '';
         foreach ($css as $row) {
-            //$html .= '<link href="' . THEME_STATIC .'/'.$row . '" rel="stylesheet">';
-            //$html .= Html::style(THEME_STATIC . '/' . $row['url'], array('weight' => $row['weight']));
+            //$html .= '<link href="' . THEME_STATIC .'/'.$row['url'] . '" rel="stylesheet">';
+            $html .= Html::style(THEME_STATIC . '/' . $row['url'], array('weight' => $row['weight']));
         }
         return $html;
     }
@@ -31,8 +33,8 @@ class Template {
     public static function js($js) {
         $html = '';
         foreach ($js as $row) {
-            //$html .= '<script src="' . THEME_STATIC .'/'.$row . '"></script>';
-            //$html .= HTML::script(THEME_STATIC . '/' . $row['url'], array('weight' => $row['weight']));
+            //$html .= '<script src="' . THEME_STATIC .'/'.$row['url'] . '"></script>';
+            $html .= HTML::script(THEME_STATIC . '/' . $row['url'], array('weight' => $row['weight']));
         }
         return $html;
     }

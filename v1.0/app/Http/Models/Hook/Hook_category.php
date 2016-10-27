@@ -4,8 +4,12 @@
  * 分类钩子
  * Hook_category
  */
+
 namespace App\Http\Models\Hook;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Hook\Hook;
+
 class Hook_category extends Model {
 
     /**

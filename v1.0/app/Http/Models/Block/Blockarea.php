@@ -21,7 +21,7 @@ class Blockarea extends Model {
     public $timestamps = false;
 
     public function block() {
-        return $this->hasMany('Block', 'baid');
+        return $this->hasMany('App\Http\Models\Block\Block', 'baid');
     }
 
     /**
@@ -33,14 +33,16 @@ class Blockarea extends Model {
         if (empty($area)) {
             return '不存在的区域!';
         }
-
-        foreach ($area->block as $row) {
-            //die();
-            if (empty($row)) {
-                continue;
+        if ($area->block) {
+            foreach ($area->block as $row) {
+                //die();
+                if (empty($row)) {
+                    continue;
+                }
+                $blocks[] = $row;
             }
-            $blocks[] = $row;
         }
+
         if (empty($blocks)) {
             return '';
         } else {

@@ -9,7 +9,6 @@ namespace App\Http\Models\Block;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Http\Models\Block\Block;
-use App\Http\Models\Block\Blockarea;
 use App\Http\Models\Node\Node;
 use App\Http\Models\User\User;
 use App\Http\Models\Link;
@@ -39,7 +38,7 @@ class Blocksystem extends Model {
             'machine_name' => 'system_new_posts',
             'title' => '最新文章',
             'description' => '最新文章',
-            'callback' => 'Blocksystem::new_posts()',
+            'callback' => 'App\Http\Models\Block\Blocksystem::new_posts()',
         );
 
         //最新用户
@@ -47,7 +46,7 @@ class Blocksystem extends Model {
             'machine_name' => 'system_new_users',
             'title' => '新进用户',
             'description' => '新进用户',
-            'callback' => 'Blocksystem::new_users()',
+            'callback' => 'App\Http\Models\Block\Blocksystem::new_users()',
         );
 
         //友情连接
@@ -55,7 +54,7 @@ class Blocksystem extends Model {
             'machine_name' => 'system_friend_link',
             'title' => '友情连接',
             'description' => '友情连接',
-            'callback' => 'Blocksystem::friend_link()',
+            'callback' => 'App\Http\Models\Block\Blocksystem::friend_link()',
         );
 
         return $list;

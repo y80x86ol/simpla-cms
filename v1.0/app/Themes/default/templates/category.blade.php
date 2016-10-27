@@ -11,6 +11,7 @@
  * 方法
  * --Theme::node_category($nodes, $category)：可以直接输出一页内容列表，并且调用node-category.blade.php中的内容样式,需配合$paginate使用
  */
+use App\Http\Models\Theme\Theme;
 ?>
 
 @extends('Theme::layout.page')

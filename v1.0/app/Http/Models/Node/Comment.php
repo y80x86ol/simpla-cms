@@ -3,8 +3,13 @@
 /*
  * 评论表,暂时不使用，都使用第三方评论
  */
+
 namespace App\Http\Models\Node;
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Setting;
+use App\Http\Models\Node\Comment;
+
 class Comment extends Model {
 
     protected $table = 'comment';
