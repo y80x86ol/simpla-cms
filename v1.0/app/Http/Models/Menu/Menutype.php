@@ -16,7 +16,7 @@ class Menutype extends Model {
     public $timestamps = false;
 
     public function menu() {
-        return $this->hasMany('Menu', 'tid');
+        return $this->hasMany('App\Http\Models\Menu\Menu', 'tid');
     }
 
 }

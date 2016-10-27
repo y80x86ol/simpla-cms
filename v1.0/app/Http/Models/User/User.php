@@ -21,7 +21,7 @@ class User extends Model{
     protected $hidden = array('password', 'remember_token');
 
     public function roles() {
-        return $this->hasOne('UserRoles', 'uid');
+        return $this->hasOne('App\Http\Models\User\UserRoles', 'uid');
     }
 
     /**

@@ -1,3 +1,7 @@
+<?php
+
+use Illuminate\Support\Facades\Input;
+?>
 @extends('BackTheme::layout.master')
 @section('content')
 <div class="row">

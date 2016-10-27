@@ -1,8 +1,22 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackSettingController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Models\Report\Logs;
+use App\Http\Models\Setting;
+use App\Http\Models\Base;
+use App\Http\Models\Seo;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Cache;
+
+class SettingController extends BaseController {
 
     /**
      * 
@@ -324,7 +338,7 @@ class BackSettingController extends BackBaseController {
             }
             $input['pretend'] = isset($input['pretend']) ? 'true' : 'false';
             //1、替换数据
-            $mail_setting_dir = dirname(dirname(__DIR__)) . '/config/mail_setting.php';
+            $mail_setting_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/config/mail_setting.php';
             $mail_setting = file_get_contents($mail_setting_dir);
             $mail_setting = str_replace('{{host}}', $input['host'], $mail_setting);
             $mail_setting = str_replace('{{port}}', $input['port'], $mail_setting);
@@ -334,7 +348,7 @@ class BackSettingController extends BackBaseController {
             $mail_setting = str_replace('{{password}}', $input['password'], $mail_setting);
             $mail_setting = str_replace('{{pretend}}', $input['pretend'], $mail_setting);
             //2、写入数据
-            $mail = dirname(dirname(__DIR__)) . '/config/mail.php';
+            $mail = dirname(dirname(dirname(dirname(__DIR__)))) . '/config/mail.php';
             file_put_contents($mail, $mail_setting);
 
             return View::make('BackTheme::templates.message', array('message' => '保存成功', 'type' => 'success', 'url' => '/admin/setting/email'));

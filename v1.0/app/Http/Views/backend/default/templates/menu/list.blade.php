@@ -1,3 +1,8 @@
+<?php
+
+use App\Http\Models\Base;
+?>
+
 @extends('BackTheme::layout.master')
 
 @section('content')
@@ -18,7 +23,7 @@
             <div class="panel-body">
                 <p>1、修改显示位置直接编辑下面的数字，数字越大越靠后排列</p>
             </div>
-            
+
             {{Form::open(array('url'=>'admin/menu/weight/'.$data['tid'].'/edit','method' => 'post'))}}
             <table class="table">
                 <thead>

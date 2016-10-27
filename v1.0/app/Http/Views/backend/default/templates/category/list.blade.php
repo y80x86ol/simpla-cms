@@ -1,3 +1,7 @@
+<?php
+
+use App\Http\Models\Base;
+?>
 @extends('BackTheme::layout.master')
 
 @section('content')

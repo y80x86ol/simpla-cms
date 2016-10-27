@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Models\Setting;
+use Illuminate\Support\Facades\View;
 
-class BackBaseController extends Controller {
+class BaseController extends Controller {
 
     /**
      * Setup the layout used by the controller.
@@ -29,7 +31,7 @@ class BackBaseController extends Controller {
          */
         //主题
         $this->adminThem = Setting::find('admin_theme') ? Setting::find('admin_theme')->value : 'default';
-        View::addNamespace('BackTheme', dirname(__DIR__) . '/views/backend/' . $this->adminThem . '/');
+        View::addNamespace('BackTheme', dirname(dirname(__DIR__)) . '/views/backend/' . $this->adminThem . '/');
         //前端静态Public地址
         define('BACK_THEME_STATIC', '/views/backend/' . $this->adminThem);
     }

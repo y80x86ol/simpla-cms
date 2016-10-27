@@ -21,7 +21,7 @@ class Logs extends Model {
      * @return type
      */
     public function user() {
-        return $this->hasOne('User', 'id', 'uid');
+        return $this->hasOne('App\Http\Models\User\User', 'id', 'uid');
     }
 
 }

@@ -3,10 +3,22 @@
 /*
  * 分类管理
  */
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackCategoryController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Models\Report\Logs;
+use App\Http\Models\Category\Categorytype;
+use App\Http\Models\Category\Category;
+use App\Http\Models\Seo;
+
+class CategoryController extends BaseController {
 
     /**
      * 分类类型列表
@@ -210,14 +222,14 @@ class BackCategoryController extends BackBaseController {
             $rules = array(
                 'title' => 'required|max:32',
                 'description' => 'max:256',
-                //'machine_name' => 'required|max:64',
+                    //'machine_name' => 'required|max:64',
             );
             $messages = array(
                 'title.required' => '必须填写标题',
                 'title.max' => '标题最多只能输入:max个字符',
                 'description.max' => '描述最多只能输入:max个字符',
-                //'machine_name.required' => '必须填写机器名字',
-                //'machine_name.max' => '机器名字最多只能输入64个字符',
+                    //'machine_name.required' => '必须填写机器名字',
+                    //'machine_name.max' => '机器名字最多只能输入64个字符',
             );
             //进行字段验证
             $validator = Validator::make($input, $rules, $messages);

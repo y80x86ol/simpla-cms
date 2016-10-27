@@ -3,9 +3,11 @@
 /*
  * Node内容
  */
+
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\View;
 
 class NodeController extends BaseController {
 

@@ -3,10 +3,27 @@
 /*
  * 用户管理
  */
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackUserController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Http\Models\Report\Logs;
+use App\Http\Models\User\User;
+use App\Http\Models\Node\Node;
+use App\Http\Models\User\Roles;
+use App\Http\Models\User\UserRoles;
+use App\Http\Models\Hook\Hook_access;
+use App\Http\Models\User\RolesPermission;
+
+class UserController extends BaseController {
 
     public function __construct() {
         parent::__construct();

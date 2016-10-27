@@ -2,6 +2,7 @@
 /*
  * 分类
  */
+use App\Http\Models\Base;
 ?>
 @if(isset($field['value']))
 <div class="form-group">

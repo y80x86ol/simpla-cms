@@ -34,7 +34,7 @@ class Node extends Model {
      * @return type
      */
     public function nodeType() {
-        return $this->hasOne('Nodetype', 'type', 'type');
+        return $this->hasOne('App\Http\Models\Node\Nodetype', 'type', 'type');
     }
 
     /**
@@ -43,7 +43,7 @@ class Node extends Model {
      * @return type
      */
     public function user() {
-        return $this->hasOne('User', 'id', 'uid');
+        return $this->hasOne('App\Http\Models\User\User', 'id', 'uid');
     }
 
     /**

@@ -230,7 +230,7 @@ class Base extends Model {
      * ---------------------------------------------
      */
     public static function get_all_themes() {
-        $dir = dirname(__DIR__) . '/themes';
+        $dir = dirname(dirname(__DIR__)) . '/Themes';
         $themes_folder = self::get_file_list($dir);
         $theme_list = array();
 
@@ -265,9 +265,10 @@ class Base extends Model {
         $setting_module_status = Setting::find('module_status');
         $module_status = unserialize($setting_module_status->value);
         //获取所有模块
-        $dir = dirname(__DIR__) . '/modules';
+        $dir = dirname(dirname(__DIR__)) . '/Modules';
         $modules_folder = self::get_file_list($dir);
         $module_list = array();
+
         foreach ($modules_folder as $row) {
             $model_json_dir = self::get_module_dir($row, 'json');
             $info_dir = self::get_module_dir($row, 'info');
@@ -360,16 +361,16 @@ class Base extends Model {
     public static function get_module_dir($name, $type) {
         switch ($type) {
             case 'info':
-                $module_dir = dirname(__DIR__) . '/modules/' . $name . '/info.php';
+                $module_dir = dirname(dirname(__DIR__)) . '/Modules/' . $name . '/info.php';
                 break;
             case 'json':
-                $module_dir = dirname(__DIR__) . '/modules/' . $name . '/module.json';
+                $module_dir = dirname(dirname(__DIR__)) . '/Modules/' . $name . '/module.json';
                 break;
             case 'install':
-                $module_dir = dirname(__DIR__) . '/modules/' . $name . '/install.php';
+                $module_dir = dirname(dirname(__DIR__)) . '/Modules/' . $name . '/install.php';
                 break;
             case 'module':
-                $module_dir = dirname(__DIR__) . '/modules/' . $name . '/module.php';
+                $module_dir = dirname(dirname(__DIR__)) . '/Modules/' . $name . '/module.php';
                 break;
             default :
                 $module_dir = '';
@@ -386,7 +387,7 @@ class Base extends Model {
     public static function get_theme_dir($name, $type) {
         switch ($type) {
             case 'info':
-                $theme_dir = dirname(__DIR__) . '/themes/' . $name . '/info.php';
+                $theme_dir = dirname(dirname(__DIR__)) . '/Themes/' . $name . '/info.php';
                 break;
             default :
                 $theme_dir = '';

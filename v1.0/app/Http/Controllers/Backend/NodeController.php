@@ -3,10 +3,24 @@
 /*
  * 内容管理
  */
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackNodeController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use App\Http\Models\Report\Logs;
+use App\Http\Models\Node\Nodetype;
+use App\Http\Models\Node\Nodefield;
+use App\Http\Models\Node\Node;
+use App\Http\Models\Seo;
+
+class NodeController extends BaseController {
 
     /**
      * 内容列表

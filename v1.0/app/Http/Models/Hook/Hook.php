@@ -32,7 +32,7 @@ class Hook extends Model {
      * @return boolean
      */
     public static function module_hook($module, $hook) {
-        require_once dirname(dirname(__DIR__)) . '/modules/' . $module . '/module.php';
+        require_once dirname(dirname(dirname(__DIR__))) . '/Modules/' . $module . '/module.php';
         $function = $module . '_' . $hook;
         if (function_exists($function)) {
             return TRUE;

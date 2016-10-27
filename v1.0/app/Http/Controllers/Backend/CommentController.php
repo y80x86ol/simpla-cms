@@ -3,10 +3,21 @@
 /*
  * 评论：第三方评论配置
  */
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackCommentController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Models\Report\Logs;
+use App\Http\Models\Setting;
+use App\Http\Models\Node\Comment;
+
+class CommentController extends BaseController {
 
     /**
      * 评论设置

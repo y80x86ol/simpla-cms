@@ -1,3 +1,9 @@
+<?php
+
+use Illuminate\Support\Facades\Input;
+use App\Http\Models\Base;
+?>
+
 @extends('BackTheme::layout.master')
 @section('content')
 

@@ -8,6 +8,8 @@ namespace App\Http\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Hook\Hook_access;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class RolesPermission extends Model {
 

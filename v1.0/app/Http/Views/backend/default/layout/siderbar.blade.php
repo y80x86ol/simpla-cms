@@ -1,4 +1,10 @@
-<?php $url_array = explode('/', Request::path()) ?>
+<?php
+
+use App\Http\Models\User\RolesPermission;
+use Illuminate\Support\Facades\Auth;
+
+$url_array = explode('/', Request::path());
+?>
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
@@ -13,11 +19,13 @@
                 <ul class="nav nav-second-level">
                     @foreach($access['list'] as $row)
                     <li>
-                        <?php try {
+                        <?php
+                        try {
                             URL::route($row['as']);
                         } catch (Exception $e) {
                             continue;
-                        } //是为了解决开启模块的时候，导致路径不存在，所以这样处理的?>
+                        } //是为了解决开启模块的时候，导致路径不存在，所以这样处理的
+                        ?>
                         @if(URL::route($row['as']) == Request::url())
                         <a href="{{URL::route($row['as'])}}" class="active">{{$row['title']}} <span class="glyphicon glyphicon-hand-right"></span></a>
                         @else

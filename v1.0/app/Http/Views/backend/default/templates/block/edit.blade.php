@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\Input;
+?>
+
 @extends('BackTheme::layout.master')
 @section('content')
 <div class="row">
@@ -44,7 +49,7 @@
         </div>
         <div class="form-group">
             <label>所属区域<span class="text-red" title="此项必填">*</span></label>
-            <?php echo Form::select('baid', $areas, $block['baid'], array('class' => 'form-control')); ?>
+<?php echo Form::select('baid', $areas, $block['baid'], array('class' => 'form-control')); ?>
         </div>
         <div class="form-group">
             <label>是否开启缓存<span class="text-red" title="此项必填">*</span></label>

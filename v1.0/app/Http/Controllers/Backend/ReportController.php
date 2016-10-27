@@ -1,8 +1,13 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackReportController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use App\Http\Models\Report\Logs;
+use App\Http\Models\Report\Report;
+
+class ReportController extends BaseController {
 
     /**
      * 报告首页

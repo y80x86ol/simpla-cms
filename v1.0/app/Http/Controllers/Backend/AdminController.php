@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
+use App\Http\Controllers\Backend\BaseController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Logs;
 
-class BackAdminController extends BackBaseController {
+use App\Http\Models\Report\Report;
+use App\Http\Models\User\RolesPermission;
+
+class AdminController extends BaseController {
 
     /**
      * 后台首页
@@ -28,12 +38,12 @@ class BackAdminController extends BackBaseController {
         if (Request::method() == 'POST') {
             //1、验证码验证
             $rules = array(
-                'user-captcha' => 'required|captcha'
+                //'user-captcha' => 'required|captcha'
             );
             $validator = Validator::make(Input::all(), $rules);
             if ($validator->fails()) {
                 Input::flash();
-                return Redirect::back()->with('message', '验证码错误')->withInput();
+                return redirect()->back()->with('message', '验证码错误')->withInput();
             }
             //2、账户密码验证
             $input = Input::all();
@@ -53,14 +63,14 @@ class BackAdminController extends BackBaseController {
                     $result = RolesPermission::where('rid', $rid)->where('name', 'admin_login')->get();
                     if (!$result) {
                         Auth::logout();
-                        return Redirect::to('/');
+                        return redirect()->to('/');
                     }
                 }
                 Logs::create(array('uid' => Auth::user()->id, 'type' => 'login', 'message' => '登陆'));
-                return Redirect::intended('admin');
+                return redirect()->intended('admin');
             } else {
                 Input::flash();
-                return Redirect::back()->with('message', '用户名 / 邮箱或者密码错误')->withInput();
+                return redirect()->back()->with('message', '用户名 / 邮箱或者密码错误')->withInput();
             }
         }
         $message = Session::get('message');

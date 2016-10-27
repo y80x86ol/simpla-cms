@@ -7,6 +7,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\View;
 
 class CategoryController extends BaseController {
 
@@ -27,14 +28,14 @@ class CategoryController extends BaseController {
         }
         //获取该cid及下面的所有分类
         $categories = Category::get_all_category_by_cid($cid);
-        
+
         $cids = array();
         foreach ($categories as $item) {
             $cids[] = $item['id'];
         }
         //获取该分类下的所有nid
         $limit = Setting::get_list_num('category');
-        $nodes_all = Node::Join('category_data', 'category_data.nid', '=', 'node.id')->whereIn('category_data.cid',$cids)->where('node.status', 1)->orderBy('node.sticky','desc')->orderBy('created_at','desc')->paginate($limit);
+        $nodes_all = Node::Join('category_data', 'category_data.nid', '=', 'node.id')->whereIn('category_data.cid', $cids)->where('node.status', 1)->orderBy('node.sticky', 'desc')->orderBy('created_at', 'desc')->paginate($limit);
         $nodes = array();
         foreach ($nodes_all as $key => $node) {
             $nodes[] = Node::load_all($node->nid);

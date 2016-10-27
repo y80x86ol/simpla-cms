@@ -3,9 +3,11 @@
 /*
  * 搜索功能
  */
+
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\View;
 
 class SearchController extends BaseController {
 

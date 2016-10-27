@@ -3,10 +3,12 @@
 /*
  * 字段管理
  */
+
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Backend\BackBaseController;
-class BackFieldController extends BackBaseController {
+use App\Http\Controllers\Backend\BaseController;
+
+class FieldController extends BaseController {
 
     /**
      * 字段类型列表

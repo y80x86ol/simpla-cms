@@ -30,6 +30,7 @@ class Authenticate {
         //排除403和404页面
         if ($request->path() != 'admin/403' && $request->path() != 'admin/404') {
             //使用了记住我的功能
+
             //未登录的用户跳转到登录页面，登录了的用户验证是否具有权限
             if (Auth::check() || Auth::viaRemember()) {
                 if (User::find(Auth::user()->id)->roles['rid'] == '3') {

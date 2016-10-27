@@ -86,7 +86,7 @@ class Setting extends Model {
     }
 
     public static function module_handle($module_name, $type, $enabled) {
-        $module_json_dir = dirname(__DIR__) . '/modules/' . $module_name . '/module.json';
+        $module_json_dir = dirname(dirname(__DIR__)) . '/modules/' . $module_name . '/module.json';
         //1、开启或者关闭模块
         if ($type == 'open' || $type == 'close') {
             if (file_exists($module_json_dir)) {

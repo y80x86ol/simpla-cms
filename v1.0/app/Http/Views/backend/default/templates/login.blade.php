@@ -1,3 +1,9 @@
+<?php
+
+//视图中使用Input
+use Illuminate\Support\Facades\Input;
+?>
+
 <!--后台展示信息-->
 @extends('BackTheme::layout.master_single')
 
@@ -24,10 +30,6 @@
                         </div>
                         <div class="form-group">
                             <input class="form-control" placeholder="密码" name="password" type="password" value="" required="" value='{{Input::old('password')}}'>
-                        </div>
-                        <div class="form-group">
-                            <img src="{{Captcha::getImage('4','100','60')}}" class="img-responsive pull-right">
-                            <input class="form-control" placeholder="请输入验证码" name="user-captcha" type="text" value="" required="" style="width: 200px">
                         </div>
                         <div class="checkbox">
                             <label>

@@ -156,8 +156,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         
-        Illuminate\Html\HtmlServiceProvider::class,
-        //Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //Illuminate\Html\HtmlServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
     ],

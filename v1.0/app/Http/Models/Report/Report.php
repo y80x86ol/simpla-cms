@@ -9,6 +9,7 @@ namespace App\Http\Models\Report;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Node\Node;
 use App\Http\Models\User\User;
+use App\Http\Models\Base;
 
 class Report extends Model {
 
