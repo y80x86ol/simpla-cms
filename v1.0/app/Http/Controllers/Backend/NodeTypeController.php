@@ -19,6 +19,7 @@ use App\Http\Models\Node\Node;
 use App\Http\Models\Field\Fieldconfig;
 use App\Http\Models\Field\Field;
 use App\Http\Models\Category\Categorytype;
+use App\Http\Models\Node\Nodefield;
 
 class NodeTypeController extends BaseController {
 

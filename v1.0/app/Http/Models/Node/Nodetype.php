@@ -17,6 +17,7 @@ class Nodetype extends Model {
 
     protected $table = 'node_type';
     protected $primaryKey = 'type';
+    public $incrementing = false;
     //fillable 属性指定哪些属性可以被集体赋值。这可以在类或接口层设置。
     //fillable 的反义词是 guarded，将做为一个黑名单而不是白名单：
     protected $fillable = array('name', 'description', 'type');
