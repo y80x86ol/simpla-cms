@@ -9,6 +9,7 @@ namespace App\Http\Models\Hook;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Base;
+use App\Http\Models\Hook\Hook_block;
 
 class Hook_block extends Model {
 

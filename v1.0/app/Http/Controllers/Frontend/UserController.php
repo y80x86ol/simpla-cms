@@ -4,6 +4,16 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Models\Upload\Image;
+use App\Http\Models\Node\Node;
+use App\Http\Models\Theme\Theme;
+use App\Http\Models\Hook\Hook_user;
+use App\Http\Models\User\User;
 
 class UserController extends BaseController {
 

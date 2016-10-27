@@ -8,6 +8,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Models\Node\Node;
+use App\Http\Models\Theme\Theme;
+use App\Http\Models\Node\Comment;
+use App\Http\Models\Setting;
+use App\Http\Models\Seo;
+use App\Http\Models\Hook\Hook_node;
 
 class NodeController extends BaseController {
 

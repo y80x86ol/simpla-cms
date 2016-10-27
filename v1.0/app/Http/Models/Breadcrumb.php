@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Models\Category\Category;
 use App\Http\Models\Category\Categorydata;
 use App\Http\Models\User\User;
+use App\Http\Models\Node\Node;
 
 class Breadcrumb extends Model {
 

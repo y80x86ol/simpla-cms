@@ -61,6 +61,7 @@ class NodeController extends BaseController {
     public function type_list() {
         //读取所有内容类型
         $node_type = Nodetype::all();
+
         return View::make('BackTheme::templates.node/type_list', array('node_type' => $node_type));
     }
 

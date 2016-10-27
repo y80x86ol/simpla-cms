@@ -7,7 +7,6 @@
 namespace App\Http\Models\Node;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Models\Base;
 use App\Http\Models\Node\Node;
 use App\Http\Models\Node\Nodefield;
 use App\Http\Models\Field\Fieldconfig;

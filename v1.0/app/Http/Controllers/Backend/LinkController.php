@@ -66,7 +66,7 @@ class LinkController extends BaseController {
             $data['title'] = $input['title'];
             $data['url'] = $input['url'];
             $data['description'] = $input['description'];
-            $data['image'] = $input['image'];
+            $data['image'] = isset($input['image']) ? $input['image'] : '';
             $data['weight'] = $input['weight'];
             $result = Link::create($data);
 
