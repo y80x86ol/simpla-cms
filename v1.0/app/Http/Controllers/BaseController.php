@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 //use PHPImageWorkshop\ImageWorkshop;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Menu\Menu;
 use App\Http\Models\Setting;
@@ -14,7 +14,6 @@ use App\Http\Models\Hook\Hook_page;
 class BaseController extends Controller {
 
     public $theme_default;
-    private $request;
 
     /**
      * Setup the layout used by the controller.
@@ -28,13 +27,6 @@ class BaseController extends Controller {
     }
 
     public function __construct() {
-        $this->request = new Request();
-        /**
-         * 定义静态变量
-         */
-        define('NOW_FORMAT_TIME', date('Y-m-d H:i:d', time()));
-        define('NOW_TIME', time());
-
         /**
          * 定义系统模板路径
          */
@@ -46,9 +38,9 @@ class BaseController extends Controller {
          * 读取站点基础设置
          * -----------------------------------------------------------
          */
-        $this->siteName = Setting::find('site_name') ? Setting::find('site_name')->value : 'KenCMS';
+        $this->siteName = Setting::find('site_name') ? Setting::find('site_name')->value : 'Simpla';
         $this->siteDescription = Setting::find('site_description');
-        $this->siteUrl = 'http://' . (Setting::find('site_url')->value ? Setting::find('site_url')->value : $this->request->server('SERVER_NAME'));
+        $this->siteUrl = 'http://' . (Setting::find('site_url')->value ? Setting::find('site_url')->value : Request::server('SERVER_NAME'));
         $this->siteLogo = '/' . Setting::find('site_logo') ? Setting::find('site_logo')->value : 'logo.png';
         $this->siteCopyright = Setting::find('site_copyright')->value;
         $this->siteTongji = Setting::find('site_tongji')->value;
@@ -169,13 +161,13 @@ class BaseController extends Controller {
          * 增加其他额外变量
          * ---------------------------------------------------------
          */
-        $is_front = ($this->request->path() == '/') ? true : false;
+        $is_front = (Request::path() == '/') ? true : false;
         View::share('is_front', $is_front); //是否为首页
 
         $is_admin = $logged_in ? (($users->roles['rid'] == '3') ? true : false) : false;
         View::share('is_admin', $is_admin); //是否为管理员
 
-        $base_path = $this->request->root();
+        $base_path = Request::root();
         View::share('base_path', $base_path); //程序安装路径
     }
 

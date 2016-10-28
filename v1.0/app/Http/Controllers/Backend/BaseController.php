@@ -21,12 +21,6 @@ class BaseController extends Controller {
 
     public function __construct() {
         /**
-         * 定义静态变量
-         */
-        define('NOW_FORMAT_TIME', date('Y-m-d H:i:d', time()));
-        define('NOW_TIME', time());
-
-        /**
          * 获取站点配置
          */
         //主题

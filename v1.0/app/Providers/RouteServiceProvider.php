@@ -31,8 +31,8 @@ class RouteServiceProvider extends ServiceProvider {
         if (!strpos(Request::url(), 'install')) {
             if (!file_exists(dirname(dirname(__FILE__)) . '/app/lock.txt')) {
                 //Redirect::to('/install/step1');
-                header('Location:/install/step1');
-                exit;
+//                header('Location:/install/step1');
+//                exit;
             }
         }
     }
