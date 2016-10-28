@@ -17,11 +17,11 @@ class InstallCheck {
      */
     public function handle($request, Closure $next, $guard = null) {
         //检查程序是否已经安装
-        if (!strpos($request->url(), 'install')) {
-            if (!file_exists('../app/lock.txt')) {
-                return redirect()->to('/install/step1');
-            }
-        }
+//        if (!strpos($request->url(), 'install')) {
+//            if (!file_exists(dirname(dirname(__FILE__)) . 'app/lock.txt')) {
+//                return redirect()->to('/install/step1');
+//            }
+//        }
 
         return $next($request);
     }
