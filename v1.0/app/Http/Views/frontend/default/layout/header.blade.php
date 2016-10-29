@@ -27,7 +27,7 @@
             </button>
             <!--logo-->
             @if($siteLogo)
-            <a href="{{$siteUrl}}" class="navbar-brand"><img src="/{{$siteLogo}}" width="87" height="31"/></a>
+            <a href="{{$siteUrl}}" class="navbar-brand"><img src="{{$siteLogo}}" width="87" height="31"/></a>
             @else
             <a href="{{$siteUrl}}" class="navbar-brand">{{$siteName}}</a>
             @endif
