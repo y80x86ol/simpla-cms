@@ -18,6 +18,7 @@
  * 方法：
  * --Base::csubstr($content,0,500):截取内容为最多500个字符
  */
+use App\Http\Models\Base;
 ?>
 <article class="blog-main node-{{$id}}">
     <h3 class="am-article-title blog-title">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Frontend\BaseController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -263,13 +263,15 @@ class UserController extends BaseController {
                 //Image::upload($file,$path,$weight,$height);
                 $template = Image::upload($_FILES['picture'], 'upload/author/', $id, 100, 100);
                 if (!$template) {
-                    return Redirect::to(Request::url());
+                    //return Redirect::to(Request::url());
+                    $template = Theme::message();
+                    return View::make($template, array('message' => '头像上传失败', 'type' => 'error', 'url' => '/user/' . $id . '/edit'));
                 }
                 $user->picture = $template;
                 $result = $user->save();
                 if (!$result) {
                     $template = Theme::message();
-                    return View::make($template, array('message' => '修改头像失败', 'type' => 'error', 'url' => '/user/' . $id));
+                    return View::make($template, array('message' => '修改头像失败', 'type' => 'error', 'url' => '/user/' . $id . '/edit'));
                 }
             }
             $input = Input::all();

@@ -6,8 +6,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Frontend\BaseController;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Models\Node\Node;
+use App\Http\Models\Theme\Theme;
 
 class SearchController extends BaseController {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 //use PHPImageWorkshop\ImageWorkshop;
 use Illuminate\Support\Facades\View;
@@ -10,6 +10,7 @@ use App\Http\Models\Menu\Menu;
 use App\Http\Models\Setting;
 use App\Http\Models\Theme\Template;
 use App\Http\Models\Hook\Hook_page;
+use App\Http\Models\User\User;
 
 class BaseController extends Controller {
 
@@ -30,7 +31,7 @@ class BaseController extends Controller {
         /**
          * 定义系统模板路径
          */
-        View::addNamespace('System', dirname(__DIR__) . '/Views/system/');
+        View::addNamespace('System', VIEWS_PATH . '/system/');
 
 
         /**
@@ -38,15 +39,22 @@ class BaseController extends Controller {
          * 读取站点基础设置
          * -----------------------------------------------------------
          */
-        $this->siteName = Setting::find('site_name') ? Setting::find('site_name')->value : 'Simpla';
+        //1、加载基础信息
+        $this->siteName = Setting::find('site_name') ? Setting::find('site_name')->value : APP_NAME;
         $this->siteDescription = Setting::find('site_description');
         $this->siteUrl = 'http://' . (Setting::find('site_url')->value ? Setting::find('site_url')->value : Request::server('SERVER_NAME'));
-        $this->siteLogo = '/' . Setting::find('site_logo') ? Setting::find('site_logo')->value : 'logo.png';
+
+        //2、加载默认主题
+        $this->theme_default = Setting::find('theme_default')->value;
+
+        //3、加载其他信息
+        $this->siteLogo = THTEMES_STATIC_PATH . $this->theme_default . '/' . (Setting::find('site_logo') ? Setting::find('site_logo')->value : 'logo.png');
+
         $this->siteCopyright = Setting::find('site_copyright')->value;
         $this->siteTongji = Setting::find('site_tongji')->value;
         $this->user_is_allow_login = Setting::find('user_is_allow_login')->value;
         $this->user_is_allow_register = Setting::find('user_is_allow_register')->value;
-        $this->theme_default = Setting::find('theme_default')->value;
+
 
         //站点基础信息
         View::share('siteName', $this->siteName);
@@ -70,15 +78,15 @@ class BaseController extends Controller {
          */
         //前端主题
         View::share('theme_default', $this->theme_default);
-        View::addNamespace('Theme', dirname(dirname(__DIR__)) . '/Themes/' . $this->theme_default . '/');
+        View::addNamespace('Theme', THEMES_PATH . $this->theme_default . '/');
         //前端默认主题
-        View::addNamespace('DefaultTheme', dirname(__DIR__) . '/Views/frontend/default/');
+        View::addNamespace('DefaultTheme', VIEWS_PATH . '/frontend/default/');
+
         //前端静态Public地址
-        define('THEME_STATIC', '/themes/' . $this->theme_default);
+        define('THEME_STATIC', THTEMES_STATIC_PATH . $this->theme_default);
         //后端主题
         $this->adminThem = Setting::find('admin_theme') ? Setting::find('admin_theme')->value : 'default';
-        View::addNamespace('BackTheme', dirname(__DIR__) . '/Views/backend/' . $this->adminThem . '/');
-        define('BACK_THEME_STATIC', '/Views/backend/' . $this->adminThem);
+        View::addNamespace('BackTheme', dirname(dirname(__DIR__)) . '/Views/backend/' . $this->adminThem . '/');
 
 
         /**
@@ -86,7 +94,7 @@ class BaseController extends Controller {
          * 获取主题设置
          * ---------------------------------------------------------
          */
-        $theme_info = require_once(dirname(dirname(__DIR__)) . '/Themes/' . $this->theme_default . '/info.php');
+        $theme_info = require_once(THEMES_PATH . $this->theme_default . '/info.php');
         if (!$theme_info) {
             exit('当前主题缺失info.php文件，请检查该主题是否为一个完整的主题！');
         }
@@ -148,9 +156,9 @@ class BaseController extends Controller {
          * 用户详细信息
          * ------------------------------------------------------
          */
-        //list($users, $logged_in) = User::info();
-        $users = array();
-        $logged_in = array();
+        list($users, $logged_in) = User::info();
+//        $users = array();
+//        $logged_in = array();
         View::share('users', $users); //用户信息
         View::share('logged_in', $logged_in); //是否登录
         $login_and_register = View::make("System::login_and_register", array('users' => $users))->render();

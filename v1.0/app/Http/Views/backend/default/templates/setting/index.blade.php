@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label for="site_logo">站点LOGO</label>
                     <input type="file" name="site_logo">
-                    <p><img src="/{{$setting['site_logo']?$setting['site_logo']:'logo.png'}}" height="100" /></p>
+                    <p><img src="{{$setting['site_logo']?'/'.$setting['site_logo']:'logo.png'}}" height="100" /></p>
                 </div>
                 <div class="form-group">
                     <label for="site_mail">站点邮箱</label>

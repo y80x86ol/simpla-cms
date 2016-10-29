@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 变量：
  * --$user：用户信息
@@ -8,6 +9,7 @@
  * --$user_content_top:用户顶部内容输出
  * --$user_content_bottom:用户底部内容输出
  */
+use Illuminate\Support\Facades\Auth;
 ?>
 @extends('Theme::layout.page')
 
@@ -21,7 +23,7 @@
     </div>
     <h3>
         {{$user['username']}}
-        @if($user['id'] == Auth::user()->id)
+        @if($user['id'] == Auth::user()['id'])
         <small>(<a href="/user/{{$user['id']}}/edit">编辑个人信息</a>)</small>
         @endif
     </h3>

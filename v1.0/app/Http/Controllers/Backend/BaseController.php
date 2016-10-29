@@ -20,14 +20,11 @@ class BaseController extends Controller {
     }
 
     public function __construct() {
-        /**
-         * 获取站点配置
-         */
         //主题
         $this->adminThem = Setting::find('admin_theme') ? Setting::find('admin_theme')->value : 'default';
         View::addNamespace('BackTheme', dirname(dirname(__DIR__)) . '/views/backend/' . $this->adminThem . '/');
-        //前端静态Public地址
-        define('BACK_THEME_STATIC', '/views/backend/' . $this->adminThem);
+        //后台静态文件地址
+        defined("BACKEND_STATIC_PATH") or define("BACKEND_STATIC_PATH", '/views/backend/' . $this->adminThem . '/');
     }
 
 }

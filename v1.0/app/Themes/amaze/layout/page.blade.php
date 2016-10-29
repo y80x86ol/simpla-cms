@@ -27,6 +27,8 @@
  * --Blockarea::get('sidebar_left'):左边来区域展示
  * 
  */
+use App\Http\Models\Block\Blockarea;
+use App\Http\Models\Breadcrumb;
 ?>
 <!DOCTYPE html>
 <html>

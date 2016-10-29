@@ -3,8 +3,9 @@
 namespace App\Http\Models\User;
 
 use \Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
-class User extends Model{
+class User extends Model {
 
     /**
      * The database table used by the model.

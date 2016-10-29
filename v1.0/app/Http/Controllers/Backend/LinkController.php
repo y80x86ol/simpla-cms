@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Models\Report\Logs;
 use App\Http\Models\Link;
+use App\Http\Models\Upload\Image;
 
 class LinkController extends BaseController {
 

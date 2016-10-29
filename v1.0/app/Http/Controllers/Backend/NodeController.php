@@ -19,6 +19,7 @@ use App\Http\Models\Node\Nodetype;
 use App\Http\Models\Node\Nodefield;
 use App\Http\Models\Node\Node;
 use App\Http\Models\Seo;
+use App\Http\Models\Category\Categorydata;
 
 class NodeController extends BaseController {
 

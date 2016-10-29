@@ -8,6 +8,7 @@
  * --$user_content_top:用户顶部内容输出
  * --$user_content_bottom:用户底部内容输出
  */
+use Illuminate\Support\Facades\Auth;
 ?>
 @extends('Theme::layout.page')
 

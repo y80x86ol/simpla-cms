@@ -21,7 +21,7 @@
     </div>
     <h3>
         {{$user['username']}}
-        @if($user['id'] == Auth::user()->id)
+        @if($user['id'] == Auth::user()['id'])
         <small>(<a href="/user/{{$user['id']}}/edit">编辑个人信息</a>)</small>
         @endif
     </h3>

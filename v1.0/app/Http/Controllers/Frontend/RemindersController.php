@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Frontend\BaseController;
 use Illuminate\Support\Facades\View;
 
 class RemindersController extends BaseController {

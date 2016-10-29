@@ -1,4 +1,6 @@
 <?php
+use App\Http\Models\Base;
+
 /**
  * 变量：
  * --$key：搜索关键字

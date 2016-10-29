@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Logs;
-
 use App\Http\Models\Report\Report;
 use App\Http\Models\User\RolesPermission;
+use App\Http\Models\Report\Logs;
 
 class AdminController extends BaseController {
 
@@ -38,7 +37,7 @@ class AdminController extends BaseController {
         if (Request::method() == 'POST') {
             //1、验证码验证
             $rules = array(
-                //'user-captcha' => 'required|captcha'
+                    //'user-captcha' => 'required|captcha'
             );
             $validator = Validator::make(Input::all(), $rules);
             if ($validator->fails()) {

@@ -8,15 +8,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BaseController;
 use Illuminate\Support\Facades\View;
-use App\Http\Models\Block\Blockarea;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Input;
-use App\Http\Models\Report\Logs;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Models\Block\Block;
+use App\Http\Models\Block\Blockarea;
+use App\Http\Models\Report\Logs;
 use App\Http\Models\Hook\Hook_block;
-use Illuminate\Support\Facades\Redirect;
 
 class BlockController extends BaseController {
 

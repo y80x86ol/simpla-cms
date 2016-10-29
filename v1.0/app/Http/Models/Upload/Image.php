@@ -13,11 +13,11 @@ class Image extends Model {
 
     /**
      * 图片上传功能
-     * @param array $file图像文件
-     * @param string $dirPath保存地址
-     * @param string $file_name图像名字
-     * @param int $width图像宽带
-     * @param int $height图像高度
+     * @param array $file 图像文件
+     * @param string $dirPath 保存地址
+     * @param string $file_name 图像名字
+     * @param int $width 图像宽带
+     * @param int $height 图像高度
      * @return boolean|string
      */
     public static function upload($file, $dirPath, $file_name = null, $width = null, $height = null) {
@@ -30,7 +30,6 @@ class Image extends Model {
         } else {
             return false;
         }
-
 
         $layer = ImageWorkshop::initFromPath($file['tmp_name']);
         //2、处理图片
