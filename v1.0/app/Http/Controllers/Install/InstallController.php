@@ -8,8 +8,9 @@ namespace App\Http\Controllers\Install;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
 use App\Http\Models\Install;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -20,22 +21,16 @@ use App\Http\Models\User\UserRoles;
 class InstallController extends Controller {
 
     public function __construct() {
-        View::addNamespace('InstallTheme', dirname(dirname(__DIR__)) . '/views/install/');
-        View::share('version', 'V0.2');
+        View::addNamespace('InstallTheme', VIEWS_PATH . 'install/');
+        View::share('version', APP_VERSION);
 
         //通过检测app/lock.txt来判断程序是否已经安装
-        if (file_exists(dirname(dirname(__DIR__)) . '/lock.txt') && !strpos(Request::url(), 'step4')) {
+        if (file_exists(BASE_PATH . '/lock.txt') && !strpos(Request::url(), 'step4')) {
             View::share('title', 'Simpla安装向导：消息提示');
             $html = View::make('InstallTheme::templates.message');
             echo $html;
             exit;
         }
-
-        /**
-         * 定义静态变量
-         */
-        define('NOW_FORMAT_TIME', date('Y-m-d H:i:d', time()));
-        define('NOW_TIME', time());
     }
 
     /**
@@ -69,10 +64,10 @@ class InstallController extends Controller {
     /**
      * 第三步：填写信息和安装
      */
-    public function info(Request $request) {
+    public function info() {
         View::share('title', 'Simpla安装向导：第三步');
 
-        if ($request->method() == 'POST') {
+        if (Request::method() == 'POST') {
             $input = Input::all();
             $rules = array(
                 'db_hostname' => 'required|max:100',
@@ -164,7 +159,7 @@ class InstallController extends Controller {
 
             //安装成功替换app数据
             //1、获取url和key值
-            $app_url = 'http://' . $request->server('SERVER_NAME');
+            $app_url = 'http://' . Request::server('SERVER_NAME');
             $app_key = md5(rand(100000, 999999));
             //2、替换数据
             $app_dir = dirname(dirname(dirname(dirname(__DIR__)))) . '/config/app.php';

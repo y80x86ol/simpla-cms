@@ -7,83 +7,121 @@ use Illuminate\Support\Facades\Input;
 @extends('InstallTheme::layout.page')
 
 @section('content')
-<div class="listing listing-success">
-    <div class="shape">
-        <div class="shape-text">{{$version}}</div>
-    </div>
-    <div class="listing-content">
-        <h3 class="lead">Simpla安装向导<small>第三步</small></h3>
-        <hr>
-        {!! Form::open(array('method' => 'post')) !!}
-        <!--错误提示-->
+<el-steps :space="200" :active="3" class="text-align-center margin-left-110">
+    <el-step title="第一步" description="Simpla 软件使用协议"></el-step>
+    <el-step title="第二步" description="配置检测"></el-step>
+    <el-step title="第三步" description="填写数据库信息"></el-step>
+    <el-step title="第四步" description="完成安装"></el-step>
+</el-steps>
+<br>
+{{ Form::open(array('method' => 'post')) }}
+<el-card class="box-card">
+    <!--错误提示-->
+    <div class="text-align-center error-message">
         @if($errors->all())
-        <div class="alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            @foreach($errors->all() as $error)
-            {{$error}}<br/>
-            @endforeach
-        </div>
+        @foreach($errors->all() as $error)
+        <p style="color: #FF4949">{{$error}}</p>
+        @endforeach
         @endif
-        <!--数据库连接配置-->
-        <div class="panel panel-default">
-            <div class="panel-heading">数据库配置</div>
-            <div class="panel-body">
-                <p class="text-warning">默认使用MySQL数据库，如果你想使用其他数据库，请编辑app/config/database.php文件。</p>
-
-                <!--数据库信息-->
-                <div class="form-group">
-                    <label>数据库主机<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="db_hostname" class="form-control" maxlength="100" required="" value='{{Input::old('db_prefix')?Input::old('db_prefix'):'localhost'}}'>
-                </div>
-                <div class="form-group">
-                    <label>数据库名字<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="db_name" class="form-control" maxlength="20" required="" value="{{Input::old('db_name')}}">
-                </div>
-                <div class="form-group">
-                    <label>数据库账户<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="db_username" class="form-control" maxlength="30" required="" value="{{Input::old('db_username')}}">
-                </div>
-                <div class="form-group">
-                    <label>数据库密码</label>
-                    <input type="text" name="db_password" class="form-control" maxlength="30" value="{{Input::old('db_password')}}">
-                </div>
-                <div class="form-group">
-                    <label>数据库前缀<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="db_prefix" class="form-control" maxlength="20" required="" value="{{Input::old('db_prefix')?Input::old('db_prefix'):'sp_'}}">
-                </div>
-            </div>
-        </div>
-
-        <!--账户信息配置-->
-        <div class="panel panel-default">
-            <div class="panel-heading">管理员配置</div>
-            <div class="panel-body">
-
-                <div class="form-group">
-                    <label>管理员用户名<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="username" class="form-control" maxlength="20" required="" value='{{Input::old('username')}}'>
-                </div>
-                <div class="form-group">
-                    <label>管理员密码<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="password" class="form-control" maxlength="20" required="">
-                    <small class="help-block">密码仅允许字母、数字、破折号（-）以及底线（_）</small>
-                </div>
-                <div class="form-group">
-                    <label>再次输入管理员密码<span class="text-red" title="此项必填">*</span></label>
-                    <input type="text" name="password_confirmation" class="form-control" maxlength="20" required="">
-                </div>
-                <div class="form-group">
-                    <label>管理员邮箱<span class="text-red" title="此项必填">*</span></label>
-                    <input name="email" type="email" class="form-control" maxlength="64" value='{{Input::old('email')}}'>
-                </div>
-                <hr>
-                <p class="text-align-center">
-                    <button class="btn btn-primary" type="submit">进行安装</button>
-                </p>
-            </div>
-        </div>
-        {!! Form::close() !!}
     </div>
-</div>
+
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            数据库主机
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="db_hostname" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('db_hostname')?Input::old('db_hostname'):'localhost'}}" maxlength="100">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            数据库名字
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="db_name" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('db_name')}}" maxlength="20">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            数据库账户
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="db_username" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('db_username')}}" maxlength="30">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            数据库密码
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="db_password" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('db_password')}}" maxlength="30">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            数据库前缀
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="db_prefix" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('db_prefix')?Input::old('db_prefix'):'sp_'}}" maxlength="20">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            管理员用户名
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="username" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('username')}}" maxlength="20">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            管理员密码
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="password" type="text" autocomplete="off" class="el-input__inner" required="" value="" maxlength="20">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            再次输入管理员密码
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="password_confirmation" type="text" autocomplete="off" class="el-input__inner" required="" value="" maxlength="20">
+            </div>
+        </div>
+    </div>
+    <div class="el-form-item"><label class="el-form-item__label" style="width: 100px;">
+            管理员邮箱
+        </label>
+        <div class="el-form-item__content" style="margin-left: 100px;">
+            <div class="el-input">
+                <input name="email" type="text" autocomplete="off" class="el-input__inner" required="" value="{{Input::old('email')}}" maxlength="60">
+            </div>
+        </div>
+    </div>
+
+</el-card>
+<p class="text-align-center" id="goStep3">
+    <button type="submit" class="el-button el-button--primary">
+        <span>安装</span>
+    </button>
+</p>
+{{ Form::close() }}
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        methods: {
+        }
+    });
+</script>
 
 @stop

@@ -1,81 +1,87 @@
 @extends('InstallTheme::layout.page')
 
 @section('content')
-<div class="listing listing-success">
-    <div class="shape">
-        <div class="shape-text">{{$version}}</div>
-    </div>
-    <div class="listing-content">
-        <h3 class="lead">Simpla安装向导<small>第二步</small></h3>
-        <hr>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>环境检查</th>
-                    <th>推荐配置</th>
-                    <th class="text-primary">当前配置</th>
-                    <th>最低要求</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>操作系统</td>
-                    <td>{{$recommendEnvironment['os']}}</td>
-                    <td>
-                        <span class="glyphicon {{$currentEnvironment['os_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
-                        {{$currentEnvironment['os']}}
-                    </td>
-                    <td>{{$lowestEnvironment['os']}}</td>
-                </tr>
-                <tr>
-                    <td>PHP版本</td>
-                    <td>{{$recommendEnvironment['version']}}</td>
-                    <td>
-                        <span class="glyphicon {{$currentEnvironment['version_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
-                        {{$currentEnvironment['version']}}
-                    </td>
-                    <td>{{$lowestEnvironment['version']}}</td>
-                </tr>
-                <tr>
-                    <td>MCrypt PHP 扩展</td>
-                    <td>{{$recommendEnvironment['mcrypt']}}</td>
-                    <td>
-                        <span class="glyphicon {{$currentEnvironment['mcrypt_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
-                        {{$currentEnvironment['mcrypt']}}
-                    </td>
-                    <td>{{$lowestEnvironment['mcrypt']}}</td>
-                </tr>
+<el-steps :space="200" :active="2" class="text-align-center margin-left-110">
+    <el-step title="第一步" description="Simpla 软件使用协议"></el-step>
+    <el-step title="第二步" description="配置检测"></el-step>
+    <el-step title="第三步" description="填写数据库信息"></el-step>
+    <el-step title="第四步" description="完成安装"></el-step>
+</el-steps>
+<br>
+<el-card class="box-card">
+    <template>
+        <el-table
+            :data="tableData"
+            style="width: 100%">
+            <el-table-column
+                prop="envCheck"
+                label="环境检查"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="recommendConfig"
+                label="推荐配置"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="currentConfig"
+                label="当前配置">
+            </el-table-column>
+            <el-table-column
+                prop="minRequire"
+                label="最低要求">
+            </el-table-column>
+        </el-table>
+    </template>
+</el-card>
+<p class="text-align-center">
+<el-button type="primary" v-on:click="checkStep2Again">重新检测</el-button>
+@if($currentEnvironment['os_ischeck'] && $currentEnvironment['version_ischeck'])
+<el-button type="primary" v-on:click="goStep3">下一步</el-button>
+@else
+<span class="text-danger">你的当前的配置环境无法安装Simpla</span>
+@endif
+</p>
 
-                <tr>
-                    <td>附件上传</td>
-                    <td>{{$recommendEnvironment['upload']}}</td>
-                    <td>
-                        <span class="glyphicon {{$currentEnvironment['upload_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
-                        {{$currentEnvironment['upload']}}
-                    </td>
-                    <td>{{$lowestEnvironment['upload']}}</td>
-                </tr>
-                <tr>
-                    <td>磁盘空间</td>
-                    <td>{{$recommendEnvironment['space']}}</td>
-                    <td>
-                        <span class="glyphicon {{$currentEnvironment['space_ischeck']?'glyphicon-ok text-success':'glyphicon-remove text-danger'}} "></span>
-                        {{$currentEnvironment['space']}}
-                    </td>
-                    <td>{{$lowestEnvironment['space']}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-        <p class="text-align-center">
-            <a href="/install/step2" type="button" class="btn btn-primary">重新检测</a>
-            @if($currentEnvironment['os_ischeck'] && $currentEnvironment['version_ischeck'])
-            <a href="/install/step3" type="button" class="btn btn-primary">下一步</a>
-            @else
-            <span class="text-danger">你的当前的配置环境无法安装Simpla</span>
-            @endif
-        </p>
-    </div>
-</div>
-
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            tableData: [{
+                    envCheck: '操作系统',
+                    recommendConfig: "{{$recommendEnvironment['os']}}",
+                    currentConfig: "{{$currentEnvironment['os']}}",
+                    minRequire: "{{$lowestEnvironment['os']}}"
+                }, {
+                    envCheck: 'PHP版本',
+                    recommendConfig: "{{$recommendEnvironment['version']}}",
+                    currentConfig: "{{$currentEnvironment['version']}}",
+                    minRequire: "{{$lowestEnvironment['version']}}"
+                }, {
+                    envCheck: 'MCrypt PHP 扩展',
+                    recommendConfig: "{{$recommendEnvironment['mcrypt']}}",
+                    currentConfig: "{{$currentEnvironment['mcrypt']}}",
+                    minRequire: "{{$lowestEnvironment['mcrypt']}}"
+                }, {
+                    envCheck: '附件上传',
+                    recommendConfig: "{{$recommendEnvironment['upload']}}",
+                    currentConfig: "{{$currentEnvironment['upload']}}",
+                    minRequire: "{{$lowestEnvironment['upload']}}"
+                }, {
+                    envCheck: '磁盘空间',
+                    recommendConfig: "{{$recommendEnvironment['space']}}",
+                    currentConfig: "{{$currentEnvironment['space']}}",
+                    minRequire: "{{$lowestEnvironment['space']}}"
+                }]
+        },
+        methods: {
+            checkStep2Again: function () {
+                window.location.href = '/install/step2';
+            },
+            goStep3: function () {
+                window.location.href = '/install/step3';
+            }
+        }
+    });
+</script>
 @stop
