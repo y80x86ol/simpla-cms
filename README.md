@@ -1,14 +1,14 @@
-###目前动态
+### 目前动态
 
 1、2016-11-1</br>
 已经将功能迁移到Laravel5，修改了安装主题和代码优化
 
 
-###Simpla
+### Simpla
 Simpla是基于Laravel的PHP框架进行开发的一款开源免费的内容管理系统(CMS)，基于GUN开源协议。</br>
 Simpla实现了一些基础功能，采用主题和模块的方式进行功能上的扩展。</br>
 
-###功能简介
+### 功能简介
 1、主题功能
 2、模块功能
 3、内容节点功能
@@ -18,7 +18,7 @@ Simpla实现了一些基础功能，采用主题和模块的方式进行功能�
 7、菜单功能
 8、SEO、缓存、配置等
 
-###安装
+### 安装
 1、从Simpla的官方网站或者git上面下载对应的版本</br>
 2、解压到你的项目根文件夹</br>
 3、输入你的域名进行访问，进入安装界面</br>
@@ -27,14 +27,14 @@ Simpla实现了一些基础功能，采用主题和模块的方式进行功能�
 6、安装第三步：输入你的数据库信息和管理员信息，进行安装</br>
 7、安装第四步:安装完成
 
-###在线演示
-[官方演示](http://demo.simplahub.com)</br>
-[阿里云ACE演示](http://simplademo.aliapp.com/)
+### 在线演示
+[官方演示](http://demo.simplahub.com)[已弃用]</br>
+[阿里云ACE演示](http://simplademo.aliapp.com/)[已弃用]
 
 ### 获得支持
-####官方网站
-[Simpla官方网站](http://simpla.simplahub.com)
-####开发文档
+#### 官方网站
+[Simpla官方网站](http://simpla.simplahub.com)[已弃用]
+#### 开发文档
 [Simpla使用文档](http://userguide.mydoc.io/)</br>
 [Simpla主题开发文档](http://theme.mydoc.io/)</br>
 [Simpla模块开发文档](http://module.mydoc.io/)</br>
